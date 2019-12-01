@@ -1,5 +1,6 @@
-const array = require('./array');
+const things = require("./things");
 
-const arr = [3,6,1,5,6,78,4];
+const arr = [3, 6, 1, 5, 6, 78, 4];
 
-console.log(array(arr));
+console.log(things.arrayCounter(arr));
+console.log(things.mutiply(2, 4));
