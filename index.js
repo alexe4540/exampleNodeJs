@@ -1,30 +1,11 @@
-const events = require(`events`);
-const util = require('util');
+const fs = require(`fs`);
 
-const myEmit = new events.EventEmitter();
+let readedFile = fs.readFileSync(`text.txt`, `utf-8`);
 
-myEmit.on(`someEvent`, (text) => {
-    console.log(text);
-});
+console.log(readedFile)
 
-//myEmit.emit(`someEvent`, `Event happend`);
+fs.writeFileSync(`text1.txt`, `Hello, World! from file 2`);
 
-var Cars = function(model){
-    this.model = model;
-}
+readedFile = fs.readFileSync(`text1.txt`, `utf-8`);
 
-util.inherits(Cars, events.EventEmitter);
-
-const bmw = new Cars(`BMW`);
-const audi = new Cars(`Audi`);
-const volvo = new Cars(`volvo`);
-
-let cars = [bmw, audi, volvo];
-cars.forEach((car) => {
-    car.on(`speed`, (text) => {
-        console.log(`${car.model} speed is - ${text}`);
-    })
-})
-
-bmw.emit('speed', '228.0 km');
-console.log(cars);
+console.log(readedFile)
