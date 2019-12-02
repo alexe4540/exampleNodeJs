@@ -1,6 +1,30 @@
-const things = require("./things");
+const events = require(`events`);
+const util = require('util');
 
-const arr = [3, 6, 1, 5, 6, 78, 4];
+const myEmit = new events.EventEmitter();
 
-console.log(things.arrayCounter(arr));
-console.log(things.mutiply(2, 4));
+myEmit.on(`someEvent`, (text) => {
+    console.log(text);
+});
+
+//myEmit.emit(`someEvent`, `Event happend`);
+
+var Cars = function(model){
+    this.model = model;
+}
+
+util.inherits(Cars, events.EventEmitter);
+
+const bmw = new Cars(`BMW`);
+const audi = new Cars(`Audi`);
+const volvo = new Cars(`volvo`);
+
+let cars = [bmw, audi, volvo];
+cars.forEach((car) => {
+    car.on(`speed`, (text) => {
+        console.log(`${car.model} speed is - ${text}`);
+    })
+})
+
+bmw.emit('speed', '228.0 km');
+console.log(cars);
