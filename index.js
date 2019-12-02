@@ -1,11 +1,10 @@
 const fs = require(`fs`);
 
-let readedFile = fs.readFileSync(`text.txt`, `utf-8`);
+fs.readFile(`text.txt`, `utf-8`, (err, data) => {
+    console.log(data);
+});
 
-console.log(readedFile)
+fs.writeFile(`text1.txt`, `From file 2`, (err, data) => {});
 
-fs.writeFileSync(`text1.txt`, `Hello, World! from file 2`);
+console.log(`Сработало до чтения/записис файла`)
 
-readedFile = fs.readFileSync(`text1.txt`, `utf-8`);
-
-console.log(readedFile)
