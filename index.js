@@ -1,10 +1,9 @@
-const fs = require(`fs`);
-
-fs.readFile(`text.txt`, `utf-8`, (err, data) => {
-    console.log(data);
+const http = require('http');
+const server = http.createServer(function(req, res) {
+    console.log("URL: " + req.url);
+    res.writeHead(200, {'Content_type': 'text/plain; charset=utf-8'});
+    res.end('Hello world!')
 });
 
-fs.writeFile(`text1.txt`, `From file 2`, (err, data) => {});
-
-console.log(`Сработало до чтения/записис файла`)
-
+server.listen(3000, 'localhost');
+console.log("Server run on port 3000");
