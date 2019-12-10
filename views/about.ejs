@@ -12,18 +12,11 @@
     </style>
   </head>
   <body>
-    <%- include('blocks/header.ejs') -%> 
-    <h1>News #<%= newsId%></h1>
-    <h2>Title <%= obj.title + ' ' + obj.id%></h2>
+    <%- include('blocks/header.ejs') -%>
+    <h1>About as</h1>
     <p>
-        randomNumber <%= randomNumber %>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo,
       pariatur.Maiores iusto ea corrupti alias dolorem eos nam, nisi suscipit.
     </p>
-    <ul>
-        <% obj.par.forEach((item) => { %>
-            <li><%= item%></li>
-       <% }); %>
-    </ul>
   </body>
 </html>
